@@ -59,9 +59,9 @@ float sim_get_height(void)
 
 void sim_set_acceleration(float acceleration)
 {
-   // assert(acceleration >= MIN_ACCELERATION);
-   // assert(acceleration <= MAX_ACCELERATION);
-    printf("Max accel %f\n", MAX_ACCELERATION);
+    assert(acceleration >= MIN_ACCELERATION);
+    assert(acceleration <= MAX_ACCELERATION);
+    printf("Accel %f , MAX ACC  %f\n", acceleration, MAX_ACCELERATION);
     drone.acceleration = acceleration * -EARTH_ACCELERATION - EARTH_ACCELERATION;
 }
 
