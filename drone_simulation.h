@@ -2,7 +2,7 @@
 #define DRONE_SIMULATION_H
 
 #define TIME_STEP                0.01f // [s]
-#define DRONE_MAX_ACCELERATION  130.0f  // [m/s^2]
+#define DRONE_MAX_ACCELERATION  13.0f  // [m/s^2]
 #define EARTH_ACCELERATION      -9.81f // [m/s^2]
 
 /// Start the simulation and create a log file which contains flight data.
