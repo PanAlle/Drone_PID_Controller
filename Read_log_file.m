@@ -7,9 +7,9 @@ figure(1)
 plot(flight_data(:,1), flight_data(:,2), flight_data(:,1),flight_data(:,5))
 
 
-
-data = iddata(flight_data(:,2),flight_data(:,5), 0.01);
-
+%% try to define the system to develop the PID in matlab
+% -----------WIP---------------
+%data = iddata(flight_data(:,2),flight_data(:,5), 0.01);
 %sys = tfest(data, 4, 4)
 %syspid = feedback(sys*pid(1,1,0),30)
 
