@@ -32,8 +32,10 @@ int main() {
 
     //Simulate for 30 seconds
     while (sim_time <= 30) {
+        //Select the different simulation with 1 or 2.
+        //1 - Step function
+        //2 - Trajectory following
 
-        //Select the different simulation.
         //Step function
         if (selection == '1') {
             sim_set_user_data(1);
@@ -45,15 +47,17 @@ int main() {
             err.prp_error = sim_get_example_trajectory(sim_time) - sim_get_height();
         }
 
-
+        //Compute error for PID controller
         err.der_error = (err.prp_error - pre_err) / TIME_STEP;
         err.int_error += (err.prp_error * TIME_STEP);
-
+        //Save old error for next iteration
         pre_err = err.prp_error;
-        //Define new accelleration based on the pid parameters
+        //Define new acceleration based on the PID parameters
         err.correction_val = pid.P * err.prp_error + pid.D * err.der_error + pid.I * err.int_error;
+        //Limit the max/min correction value of the acceleration
         if (err.correction_val >= MAX_ACCELERATION) err.correction_val = MAX_ACCELERATION;
         else if (err.correction_val <= MIN_ACCELERATION) err.correction_val = MIN_ACCELERATION;
+        //Set the acceleration and iterate the simulation
         sim_set_acceleration(err.correction_val);
         sim_time = sim_advance_time();
     }
