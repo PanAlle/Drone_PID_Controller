@@ -17,16 +17,11 @@ end
 % Plot the value to a 2d plot
 figure(1)
 plot(flight_data(:,1), flight_data(:,2), flight_data(:,1),flight_data(:,5));
-
+legend({'Drone trajectory','Desired trajectory'},'Location','southeast')
 % Title based on the simulation choosen
 if flight_data(2,5) == 1
     title('System step response')
 else
     title('System trajectory following')
 end
-%% try to define the system to develop the PID in matlab
-% -----------WIP---------------
-%data = iddata(flight_data(:,2),flight_data(:,5), 0.01);
-%sys = tfest(data, 4, 4)
-%syspid = feedback(sys*pid(1,1,0),30)
 
